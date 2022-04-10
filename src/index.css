@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .link {
+    @apply hover:cursor-pointer dark:;
+  }
+}
+
+:root {
+  --bgPrimary: ##e2e8f0;
+  --textPrimary: #0f172a;
+}
+.dark {
+  --bgPrimary: #0f172a;
+  --textPrimary: #e2e8f0;
+}
+html {
+  color: var(--textPrimary);
+  background-color: var(--bgPrimary);
+}

@@ -1,5 +1,13 @@
 import React from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Home from "./Container/Home";
+import Login from "./Container/Login";
 
 export default function App() {
-  return <div className="text-3xl text-slate-400">app</div>;
+  return (
+    <Routes>
+      <Route path="login" element={<Login />} />
+      <Route path="/*" element={<Home />} />
+    </Routes>
+  );
 }
