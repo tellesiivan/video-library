@@ -13,10 +13,34 @@
   --textPrimary: #0f172a;
 }
 .dark {
-  --bgPrimary: #0f172a;
+  --bgPrimary: #222831;
   --textPrimary: #e2e8f0;
 }
 html {
   color: var(--textPrimary);
   background-color: var(--bgPrimary);
+  transition: background-color 0.35s ease;
+}
+html,
+body {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.noScrollbar::-webkit-scrollbar {
+  display: none;
+}
+.noScrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

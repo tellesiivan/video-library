@@ -1,10 +1,10 @@
 import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { RiMoonClearLine, RiSearch2Line } from "react-icons/ri";
-import themeIcon from "../utils/themeIcon";
+import themeIcon from "../../utils/themeIcon";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import theme from "../utils/theme";
-import logoSrc from "../img/logo-alt.png";
+import theme from "../../utils/theme";
+import logoSrc from "../../img/logo-alt.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,7 +18,10 @@ export default function NavBar({ user }) {
   }
 
   return (
-    <Disclosure as="nav" className="bg-white shadow dark:bg-black">
+    <Disclosure
+      as="nav"
+      className="fixed top-0 z-50 w-full bg-gray-100 border-b border-gray-200 dark:bg-dark-secondary dark:border-gray-600"
+    >
       {({ open }) => (
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-4">
@@ -31,36 +34,9 @@ export default function NavBar({ user }) {
                     alt="Workflow"
                   />
                 </div>
-                <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-                  {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-indigo-500"
-                  >
-                    Home
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Videos
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
-                  >
-                    {currentTheme}
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Create
-                  </a>
-                </div>
               </div>
               <div className="flex items-center justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
-                <div className="w-full max-w-lg lg:max-w-xs">
+                <div className="w-full max-w-lg lg:max-w-md">
                   <label htmlFor="search" className="sr-only">
                     Search
                   </label>
@@ -74,7 +50,7 @@ export default function NavBar({ user }) {
                     <input
                       id="search"
                       name="search"
-                      className="block w-full py-2 pl-10 pr-3 leading-5 placeholder-gray-500 bg-gray-100 rounded-md focus:outline-none focus:placeholder-gray-400 sm:text-sm"
+                      className="block w-full py-2 pl-10 pr-3 leading-5 placeholder-gray-500 bg-white rounded-md dark:bg-dark-primary focus:outline-none focus:placeholder-gray-400 sm:text-sm"
                       placeholder="Search"
                       type="search"
                     />
@@ -83,7 +59,7 @@ export default function NavBar({ user }) {
               </div>
               <div className="flex items-center lg:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 dark:focus:ring-dark-yellow">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block w-6 h-6" aria-hidden="true" />
@@ -95,17 +71,17 @@ export default function NavBar({ user }) {
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 <button
                   type="button"
-                  className="flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none "
+                  className="flex-shrink-0 p-1 text-gray-400 rounded-full dark:text-dark-yellow hover:text-gray-500 focus:outline-none "
                   onClick={triggerTheme}
                 >
-                  <span className="sr-only">View notifications</span>
+                  <span className="sr-only">Toggle mode</span>
                   {themIcon}
                 </button>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative flex-shrink-0 ml-4">
                   <div>
-                    <Menu.Button className="flex text-sm bg-white rounded-full focus:outline-none ">
+                    <Menu.Button className="flex text-sm rounded-full focus:outline-none ">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="w-8 h-8 rounded-full"
@@ -123,14 +99,14 @@ export default function NavBar({ user }) {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-dark-secondary dark:text-dark-primaryText ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
                             href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "block px-4 py-2 text-sm "
                             )}
                           >
                             Your Profile
@@ -142,8 +118,8 @@ export default function NavBar({ user }) {
                           <a
                             href="#"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? "bg-dark-primary" : "",
+                              "block px-4 py-2 text-sm "
                             )}
                           >
                             Settings
@@ -156,7 +132,7 @@ export default function NavBar({ user }) {
                             href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "block px-4 py-2 text-sm "
                             )}
                           >
                             Sign out
@@ -172,7 +148,6 @@ export default function NavBar({ user }) {
 
           <Disclosure.Panel className="lg:hidden">
             <div className="pt-2 pb-3 space-y-1">
-              {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
               <Disclosure.Button
                 as="a"
                 href="#"
@@ -223,7 +198,7 @@ export default function NavBar({ user }) {
                   type="button"
                   className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none "
                 >
-                  <span className="sr-only">View notifications</span>
+                  <span className="sr-only">Toggle mode</span>
                   <RiMoonClearLine className="w-6 h-6" aria-hidden="true" />
                 </button>
               </div>
