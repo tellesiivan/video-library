@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import BgHeaderImg from "../helpers/BgHeaderImg";
 import CategoryDrp from "../helpers/create/CategoryDrp";
 import TitleInput from "../helpers/create/TitleInput";
 import HalfCard from "../helpers/HalfCard";
 
 export default function Create() {
+  const [values, setValues] = useState({
+    title: "",
+    category: "",
+    location: "",
+  });
+
+  function captureValue(e, type) {
+    const lowercaseValueId = type.toLowerCase();
+
+    setValues({ ...values, [lowercaseValueId]: e });
+
+    console.log(values, lowercaseValueId);
+  }
+
   return (
     <>
       <BgHeaderImg
@@ -17,8 +31,21 @@ export default function Create() {
       />
       <div className="flex mx-2 space-x-3 md:flex-row md:h-96 md:mx-4">
         <HalfCard>
-          <TitleInput />
+          <TitleInput
+            settings={{
+              idValue: "Title",
+              placeholderValue: "Drifting on a Saturday morning...",
+            }}
+            captureValue={captureValue}
+          />
           <CategoryDrp />
+          <TitleInput
+            settings={{
+              idValue: "Location",
+              placeholderValue: "Add video location...",
+            }}
+            captureValue={captureValue}
+          />
         </HalfCard>
         <HalfCard></HalfCard>
       </div>
