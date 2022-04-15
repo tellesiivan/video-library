@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 export default function Category({ navItem }) {
   const location = useLocation();
 
-  const activeStyle = `bg-gradient-to-r from-indigo-500 via-purple-500 dark:text-white`;
-  const defaultStyle = `w-full py-6 text-black-primary cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-dark-primary flex flex-col items-center justify-center `;
+  const activeStyle = `dark:text-dark-yellow text-light-purple`;
+  const defaultStyle = `w-full py-7 text-black-primary cursor-pointer  hover:bg-gray-200 dark:hover:bg-dark-navHover flex flex-col items-center justify-center `;
   const createStyle =
     "bg-gradient-to-r from-indigo-500 via-purple-500 dark:text-white";
 

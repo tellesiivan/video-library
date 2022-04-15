@@ -9,24 +9,24 @@ import {
 import { Category } from "../index";
 
 export const navigation = [
-  { id: 1, name: "Home", iconSrc: <RiHomeLine size="1.2em" />, href: "/" },
+  { id: 1, name: "Home", iconSrc: <RiHomeLine size="1.5em" />, href: "/" },
   {
     id: 3,
     name: "Create",
-    iconSrc: <RiVideoAddLine size="1.2em" />,
+    iconSrc: <RiVideoAddLine size="1.5em" />,
     href: "/create",
   },
   {
     id: 2,
     name: "Categories",
-    iconSrc: <RiListCheck2 size="1.2em" />,
+    iconSrc: <RiListCheck2 size="1.5em" />,
     href: "/categories",
   },
 
   {
     id: 4,
     name: "Bookmarks",
-    iconSrc: <RiBookmarkLine size="1.2em" />,
+    iconSrc: <RiBookmarkLine size="1.5em" />,
     href: "/bookmarks",
   },
 ];

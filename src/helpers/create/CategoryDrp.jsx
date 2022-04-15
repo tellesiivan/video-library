@@ -31,7 +31,7 @@ export default function CategoryDrp() {
               Choose a category
             </Listbox.Label>
             <div className="relative mt-1">
-              <Listbox.Button className="relative w-full py-3 pl-3 pr-10 text-left bg-white rounded-md cursor-pointer dark:bg-dark-secondary focus:outline-none sm:text-sm">
+              <Listbox.Button className="relative w-full pl-3 pr-10 text-left bg-white rounded-md cursor-pointer h-14 dark:bg-dark-secondary focus:outline-none sm:text-sm">
                 <span className="block truncate">{selected.name}</span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 ">
                   <SelectorIcon

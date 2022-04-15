@@ -4,7 +4,7 @@ export default function BgHeaderImg({ info }) {
   const { heading, desc, imgSrc } = info;
   return (
     <div className="p-2 mx-auto max-w-7xl md:p-4">
-      <div className="relative sm:rounded-lg sm:overflow-hidden">
+      <div className="relative rounded-lg sm:overflow-hidden">
         <div className="absolute inset-0">
           <img
             className="object-cover w-full h-full"

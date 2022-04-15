@@ -8,7 +8,7 @@ export default function Home({ user }) {
     <>
       <NavBar user={user} />
       <SideNav />
-      <div className="md:ml-20 md:mt-16">
+      <div className="md:ml-20 mt-16">
         {/* add categories aka tags ex: categories && categories.map() */}
         <Routes>
           <Route path="/" element={<Feed />} />

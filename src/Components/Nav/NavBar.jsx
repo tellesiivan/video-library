@@ -4,7 +4,7 @@ import { RiMoonClearLine, RiSearch2Line } from "react-icons/ri";
 import themeIcon from "../../utils/themeIcon";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import theme from "../../utils/theme";
-import logoSrc from "../../img/logo-alt.png";
+import logoSrc from "../../img/peace-logo.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -26,10 +26,10 @@ export default function NavBar({ user }) {
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-4">
             <div className="flex justify-between h-16">
-              <div className="flex px-2 lg:px-0">
+              <div className="flex px-1 ">
                 <div className="flex items-center flex-shrink-0">
                   <img
-                    className="block w-auto h-7"
+                    className="block w-auto h-10"
                     src={logoSrc}
                     alt="Workflow"
                   />
