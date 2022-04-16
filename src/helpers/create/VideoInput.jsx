@@ -65,7 +65,7 @@ export default function VideoInput({ settings, filePL, captureValue }) {
         // File deleted successfully
         captureValue("videoFile", null);
         toast("Your video file has been deleted", {
-          icon: "👏",
+          icon: "🗑️",
           position: "bottom-right",
           className: "text-xs ",
         });

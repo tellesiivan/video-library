@@ -8,23 +8,25 @@ const people = [
   { id: 3, name: "Devon Webb" },
   { id: 4, name: "Tom Cook" },
   { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
-  { id: 7, name: "Caroline Schultz" },
-  { id: 8, name: "Mason Heaney" },
-  { id: 9, name: "Claudie Smitham" },
-  { id: 10, name: "Emil Schaefer" },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function CategoryDrp() {
-  const [selected, setSelected] = useState(people[3]);
+export default function CategoryDrp({ settings, captureValue }) {
+  const { idValue, value } = settings;
+
+  const [selected, setSelected] = useState(value !== null ? value : people[3]);
+
+  function captureCategory(category) {
+    captureValue(idValue, category);
+    setSelected(category);
+  }
 
   return (
     <div className="py-4 mx-2">
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selected} onChange={captureCategory}>
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium text-gray-700 dark:text-dark-primaryText">
