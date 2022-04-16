@@ -1,3 +1,4 @@
+const { red } = require("tailwindcss/colors");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
       emerald: colors.emerald,
       indigo: colors.indigo,
       yellow: colors.yellow,
+      alert: "#ff7b72",
       light: {
         purple: "#7a66ff",
       },

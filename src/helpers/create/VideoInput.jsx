@@ -1,4 +1,6 @@
 import { RiUploadCloud2Line } from "react-icons/ri";
+import toast, { Toaster } from "react-hot-toast";
+
 import ProgressBar from "../ProgressBar";
 import { firebaseApp } from "../../firebase-config";
 import {
@@ -8,6 +10,7 @@ import {
   getDownloadURL,
   deleteObject,
 } from "firebase/storage";
+import VideoCard from "./VideoCard";
 
 export default function VideoInput({ settings, filePL, captureValue }) {
   const { file, progress } = settings;
@@ -39,15 +42,42 @@ export default function VideoInput({ settings, filePL, captureValue }) {
       () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log("File available at", downloadURL);
-
           captureValue("videoFile", downloadURL);
+          // reset progress state (for loading ui purposes)
+          filePL("progress", 0);
+          // show successful toast
+          toast("Successfully uploaded", {
+            icon: "👏",
+            position: "bottom-right",
+            className: "text-xs ",
+          });
         });
       }
     );
   }
 
+  //  Delete the video file from fireBase
+  function deleteVideo() {
+    const deleteRef = ref(storage, file);
+    // Delete the file
+    deleteObject(deleteRef)
+      .then(() => {
+        // File deleted successfully
+        captureValue("videoFile", null);
+        toast("Your video file has been deleted", {
+          icon: "👏",
+          position: "bottom-right",
+          className: "text-xs ",
+        });
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+        console.log(error);
+      });
+  }
+
   const isLoading = progress > 0 && progress <= 100;
+
   const noFileContent = isLoading ? (
     <ProgressBar
       progressValue={progress}
@@ -64,7 +94,7 @@ export default function VideoInput({ settings, filePL, captureValue }) {
       {!isLoading && (
         <input
           type="file"
-          className="absolute top-0 bottom-0 left-0 right-0 w-full h-full opacity-0 cursor-pointer z-20"
+          className="absolute top-0 bottom-0 left-0 right-0 z-20 w-full h-full opacity-0 cursor-pointer"
           onChange={uploadFileHandler}
           name="upload-file"
           accept="video/mp4,video/x-m4v,video/*"
@@ -76,9 +106,14 @@ export default function VideoInput({ settings, filePL, captureValue }) {
   return (
     <div
       type="button"
-      className="relative flex items-center justify-center w-full h-full p-12 text-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer dark:border-dark-secondary hover:border-gray-400 dark:hover:border-dark-primary"
+      className="relative flex items-center justify-center w-full h-full text-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer dark:border-dark-secondary hover:border-gray-400 dark:hover:border-dark-primary"
     >
-      {!file ? noFileContent : `file uploaded`}
+      {!file ? (
+        noFileContent
+      ) : (
+        <VideoCard videoSrc={file} action={deleteVideo} />
+      )}
+      <Toaster />
     </div>
   );
 }

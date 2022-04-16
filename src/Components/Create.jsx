@@ -39,29 +39,31 @@ export default function Create() {
           heading: "Create..",
           desc: "Upload a new video.",
           imgSrc:
-            "https://images.pexels.com/photos/2062556/pexels-photo-2062556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/1149055/pexels-photo-1149055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         }}
       />
       <div className="flex mx-2 space-x-3 md:flex-row md:h-96 md:mx-4">
         <HalfCard>
-          <CustomInput
-            settings={{
-              idValue: "Title",
-              value: values.title,
-              placeholderValue: "Drifting on a Saturday morning...",
-            }}
-            captureValue={captureValue}
-          />
-          <CategoryDrp />
-          <CustomInput
-            settings={{
-              idValue: "Location",
-              value: values.location,
-              placeholderValue: "Long Beach, CA...",
-              icon: <GoLocation className="w-5 h-5" />,
-            }}
-            captureValue={captureValue}
-          />
+          <div className="flex flex-col h-full justify-center">
+            <CustomInput
+              settings={{
+                idValue: "Title",
+                value: values.title,
+                placeholderValue: "Drifting on a Saturday morning...",
+              }}
+              captureValue={captureValue}
+            />
+            <CategoryDrp />
+            <CustomInput
+              settings={{
+                idValue: "Location",
+                value: values.location,
+                placeholderValue: "Long Beach, CA...",
+                icon: <GoLocation className="w-5 h-5" />,
+              }}
+              captureValue={captureValue}
+            />
+          </div>
         </HalfCard>
         <HalfCard>
           <VideoInput
