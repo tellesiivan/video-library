@@ -1,6 +1,5 @@
 import { RiUploadCloud2Line } from "react-icons/ri";
 import toast, { Toaster } from "react-hot-toast";
-
 import ProgressBar from "../ProgressBar";
 import { firebaseApp } from "../../firebase-config";
 import {
@@ -11,9 +10,16 @@ import {
   deleteObject,
 } from "firebase/storage";
 import VideoCard from "./VideoCard";
+import { useEffect, useState } from "react";
 
-export default function VideoInput({ settings, filePL, captureValue }) {
+export default function VideoInput({ settings, fileProgress, captureValue }) {
   const { file, progress } = settings;
+
+  const [videoName, setVideoName] = useState("");
+
+  useEffect(() => {
+    captureValue("video_name", videoName);
+  }, [videoName]);
 
   // init storage
   const storage = getStorage(firebaseApp);
@@ -34,7 +40,7 @@ export default function VideoInput({ settings, filePL, captureValue }) {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
         // set progress state
-        filePL("progress", upload_progress);
+        fileProgress("progress", upload_progress);
       },
       (error) => {
         console.log(error);
@@ -43,8 +49,9 @@ export default function VideoInput({ settings, filePL, captureValue }) {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           captureValue("videoFile", downloadURL);
+          setVideoName(videoFile.name);
           // reset progress state (for loading ui purposes)
-          filePL("progress", 0);
+          fileProgress("progress", 0);
           // show successful toast
           toast("Successfully uploaded", {
             icon: "👏",
@@ -64,7 +71,7 @@ export default function VideoInput({ settings, filePL, captureValue }) {
       .then(() => {
         // File deleted successfully
         captureValue("videoFile", null);
-        toast("Your video file has been deleted", {
+        toast("Your video has been deleted", {
           icon: "🗑️",
           position: "bottom-right",
           className: "text-xs ",

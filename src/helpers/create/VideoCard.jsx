@@ -2,17 +2,17 @@ import { RiDeleteBin4Line } from "react-icons/ri";
 
 export default function VideoCard({ videoSrc, action }) {
   return (
-    <div className="relative h-full w-full ">
+    <div className="relative w-full h-full ">
       <button
         type="button"
-        className="h-8 w-8 rounded-full bg-dark-primary absolute top-2 right-2 z-20 shadow-lg hover:scale-105 flex items-center justify-center ease-in-out duration-300  border-2 border-gray-100"
+        className="absolute z-20 flex items-center justify-center w-8 h-8 duration-300 ease-in-out border-2 border-gray-100 rounded-full shadow-lg bg-dark-primary top-2 right-2 hover:scale-105"
         onClick={() => action()}
       >
         <RiDeleteBin4Line className="text-white" />
       </button>
       <video
         src={videoSrc}
-        className="h-full w-full object-fill rounded-md"
+        className="object-fill w-full h-full rounded-md"
         controls
         autoPlay
       />

@@ -59,7 +59,7 @@ export default function NavBar({ user }) {
               </div>
               <div className="flex items-center lg:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 dark:focus:ring-dark-yellow">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 dark:focus:ring-dark-green">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block w-6 h-6" aria-hidden="true" />
@@ -71,7 +71,7 @@ export default function NavBar({ user }) {
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 <button
                   type="button"
-                  className="flex-shrink-0 p-1 text-gray-400 rounded-full dark:text-dark-yellow hover:text-gray-500 focus:outline-none "
+                  className="flex-shrink-0 p-1 text-gray-400 rounded-full dark:text-dark-green hover:text-gray-500 focus:outline-none "
                   onClick={triggerTheme}
                 >
                   <span className="sr-only">Toggle mode</span>

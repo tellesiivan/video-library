@@ -6,6 +6,7 @@ import HalfCard from "../helpers/HalfCard";
 import { GoLocation } from "react-icons/go";
 import VideoInput from "../helpers/create/VideoInput";
 import DescTextarea from "../helpers/create/DescTextarea";
+import VerifyUpload from "../helpers/create/VerifyUpload";
 
 export default function Create() {
   const [values, setValues] = useState({
@@ -13,25 +14,25 @@ export default function Create() {
     category: null,
     location: "",
     videoFile: null,
+    video_name: "",
     desc: "",
   });
   const [uploadStatus, setUploadStatus] = useState({
     progress: 0,
   });
 
-  function filePL(type, value) {
-    console.log(type, value);
-    setUploadStatus({ ...values, [type]: value });
+  function fileProgress(type, value) {
+    setUploadStatus({ ...uploadStatus, [type]: value });
   }
 
   function captureValue(type, value) {
-    const lowercaseValueId = type.toLowerCase();
+    const lowercaseType = type.toLowerCase();
 
-    const veriFilter = type === "videoFile" ? "videoFile" : lowercaseValueId;
+    const veriFilter = type === "videoFile" ? "videoFile" : lowercaseType;
 
     setValues({ ...values, [veriFilter]: value });
 
-    console.log(values, lowercaseValueId);
+    console.log(values, type, value);
   }
 
   return (
@@ -48,7 +49,7 @@ export default function Create() {
         <HalfCard
           customStyle={{
             bg: null,
-            customClasses: "flex flex-col justify-center",
+            customClasses: "flex flex-col justify-center p-2 h-96",
           }}
         >
           <CustomInput
@@ -87,7 +88,7 @@ export default function Create() {
               progress: uploadStatus.progress,
               file: values.videoFile,
             }}
-            filePL={filePL}
+            fileProgress={fileProgress}
             captureValue={captureValue}
           />
         </HalfCard>
@@ -96,7 +97,7 @@ export default function Create() {
         <HalfCard
           customStyle={{
             bg: null,
-            customClasses: "flex flex-col justify-center",
+            customClasses: "flex flex-col justify-center p-4 h-96",
           }}
         >
           <DescTextarea
@@ -110,10 +111,13 @@ export default function Create() {
         </HalfCard>
         <HalfCard
           customStyle={{
-            bg: "dark:bg-dark-navHover bg-light-purple",
-            customClasses: null,
+            bg: "dark:bg-dark-green bg-light-purple ",
+            customClasses:
+              " h-full flex justify-center p-5 flex-col items-center",
           }}
-        ></HalfCard>
+        >
+          <VerifyUpload values={values} />
+        </HalfCard>
       </div>
     </>
   );

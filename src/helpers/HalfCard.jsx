@@ -5,9 +5,9 @@ export default function HalfCard({ children, customStyle }) {
 
   return (
     <div
-      className={`w-full md:w-6/12 p-2 rounded-md h-96 md:h-full ${
+      className={`w-full md:w-6/12 rounded-md md:h-full ${
         bg ?? "dark:bg-dark-altLight bg-gray-200"
-      } ${customClasses ?? ""}`}
+      } ${customClasses ?? "h-96 p-2"}`}
     >
       {children}
     </div>

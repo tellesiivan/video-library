@@ -17,6 +17,7 @@ module.exports = {
       alert: "#ff7b72",
       light: {
         purple: "#7a66ff",
+        gray: "#d8d8d8",
       },
       dark: {
         primary: "#222831;",
@@ -24,6 +25,7 @@ module.exports = {
         primaryText: "#EEEEEE",
         altLight: "#282d36",
         yellow: "#FFD369",
+        green: "#00ffac",
         navHover: "#424850",
       },
     },

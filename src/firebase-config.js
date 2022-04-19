@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC6eEUXg803fZZqR2LHQVE5JXeqL5SxW7M",
@@ -17,3 +18,6 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 // Get a reference to the database service
 export const DB_Reference = getFirestore(firebaseApp);
+
+// Get a reference google storage service
+export const storage_Reference = getStorage(firebaseApp);
