@@ -24,7 +24,7 @@ export default function NavBar({ user }) {
     >
       {({ open }) => (
         <>
-          <div className="px-2 mx-auto max-w-7xl sm:px-4">
+          <div className="px-2 mx-auto sm:px-4">
             <div className="flex justify-between h-16">
               <div className="flex px-1 ">
                 <div className="flex items-center flex-shrink-0">

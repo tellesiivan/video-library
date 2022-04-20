@@ -9,8 +9,8 @@ export default async function FetchVideos() {
 
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    videos.push(doc.data());
     // console.log(doc.id, " => ", doc.data());
+    videos.push(doc.data());
   });
 
   return videos;

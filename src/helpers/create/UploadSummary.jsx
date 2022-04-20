@@ -1,7 +1,6 @@
 import { RiTvLine } from "react-icons/ri";
 
 export default function UploadSummary({ details }) {
-  console.log(details);
   return (
     <dl className="grid w-full grid-cols-1 gap-x-3 gap-y-8 sm:grid-cols-2">
       <div className="sm:col-span-1">

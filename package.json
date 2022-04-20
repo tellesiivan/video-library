@@ -15,6 +15,7 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-js-progressbar": "^1.1.1",
+    "react-lazy-media": "^0.3.1",
     "react-loading-icons": "^1.0.8",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",

@@ -35,6 +35,7 @@ export default function VerifyUpload({ values }) {
     };
     setSummary(true);
     await setDoc(doc(DB_Reference, `videos`, `${Date.now()}`), data);
+
     navigate("/", { replace: true });
   }
 
