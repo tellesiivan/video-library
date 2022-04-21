@@ -6,6 +6,9 @@
   .link {
     @apply hover:cursor-pointer dark:;
   }
+  .avatarVideoCard {
+    @apply inline-block w-12 h-12 duration-1000 ease-in-out border-4 border-transparent rounded-full dark:hover:border-dark-navHover hover:border-white hover:shadow-md;
+  }
 }
 
 :root {

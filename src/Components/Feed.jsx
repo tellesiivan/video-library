@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "../helpers/Skeleton";
-import FetchVideos from "../utils/FetchVideos";
+import { FetchVideos } from "../utils/FetchVideos";
 import TagsTop from "./Feed/TagsTop";
 import { useSelector } from "react-redux";
 import VideoGrid from "./Feed/VideoGrid";
 
 export default function Feed() {
-  const test = useSelector((state) => state.main.user);
-  console.log(test);
+  // const test = useSelector((state) => state.main.user);
+  // console.log(test);
   const [videos, setVideos] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +28,7 @@ export default function Feed() {
         <Skeleton />
       ) : videos ? (
         <>
-          <TagsTop />
+          {/* <TagsTop /> */}
           <VideoGrid videos={videos} />
         </>
       ) : (

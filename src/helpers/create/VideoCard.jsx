@@ -14,7 +14,7 @@ export default function VideoCard({ videoSrc, action }) {
       )}
       <video
         src={videoSrc}
-        className="object-fill w-full h-full rounded-md"
+        className="object-fill w-full h-full rounded-sm"
         muted
         loop
         onMouseOver={(e) => e.target.play()}
