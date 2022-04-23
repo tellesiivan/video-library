@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import VideoCard from "../../helpers/create/VideoCard";
-import { Link, useLocation } from "react-router-dom";
-import { FetchUser } from "../../utils/FetchVideos";
+import { Link } from "react-router-dom";
+import { FetchUser } from "../../utils/fetchData";
 import moment from "moment";
 
 export default function VideoGridItem({ video }) {
@@ -10,21 +10,20 @@ export default function VideoGridItem({ video }) {
     userInfo: "",
   });
 
-  const location = useLocation();
-
   useEffect(() => {
     async function UserDetails() {
       if (video) setUser({ ...user, userID: video.uid });
       if (user.userID) {
         const fetchedUser = await FetchUser(user.userID);
-        console.log(fetchedUser);
         setUser({ ...user, userInfo: fetchedUser });
       }
     }
     UserDetails();
   }, [user.userID]);
 
-  const timeAgo = moment(new Date(parseInt(video.id)).toISOString()).fromNow();
+  const timeAgo = moment(
+    new Date(parseInt(video.createdOn)).toISOString()
+  ).fromNow();
 
   return (
     <li className="relative p-2 bg-gray-100 rounded-sm dark:bg-dark-secondary">
@@ -58,7 +57,7 @@ export default function VideoGridItem({ video }) {
           <Link
             to={{
               pathname: `v/${video.id}`,
-              search: `?from=/`,
+              search: `?from=home`,
             }}
           >
             <h3 className="block mt-2 text-sm font-medium text-gray-900 truncate pointer-events-none dark:text-white">

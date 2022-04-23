@@ -4,6 +4,8 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  plugins: [require("daisyui")],
+
   theme: {
     colors: {
       transparent: "transparent",
@@ -20,6 +22,7 @@ module.exports = {
         gray: "#d8d8d8",
       },
       dark: {
+        nav: "#3f3f3f70",
         primary: "#222831;",
         secondary: "#393E46",
         primaryText: "#EEEEEE",

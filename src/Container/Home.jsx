@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Create, Feed, NavBar, Vdetails, UserDetails } from "../Components";
+import { Create, Feed, NavBar, UserDetails, VdetailsMain } from "../Components";
 import SideNav from "../Components/Nav/SideNav";
 
 import Skeleton from "../helpers/Skeleton";
@@ -15,7 +15,7 @@ export default function Home({ user }) {
           <Route path="/" element={<Feed />} />
           <Route path="/category/:categoryID" element={<Feed />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/v/:videoID" element={<Vdetails />} />
+          <Route path="/v/:videoID" element={<VdetailsMain />} />
           <Route path="/u/:userID" element={<UserDetails />} />
           <Route path="/search" element={<Skeleton />} />
         </Routes>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "../helpers/Skeleton";
-import { FetchVideos } from "../utils/FetchVideos";
+import { FetchVideos } from "../utils/fetchData";
 import TagsTop from "./Feed/TagsTop";
 import { useSelector } from "react-redux";
 import VideoGrid from "./Feed/VideoGrid";

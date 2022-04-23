@@ -47,3 +47,6 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+.nBlur {
+  backdrop-filter: saturate(180%) blur(7px);
+}

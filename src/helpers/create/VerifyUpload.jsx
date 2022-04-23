@@ -6,11 +6,16 @@ import { doc, setDoc } from "firebase/firestore";
 import { DB_Reference } from "../../firebase-config";
 import { getUser } from "../../utils/authUser";
 import { useNavigate } from "react-router-dom";
+import createUID from "create-unique-id";
 
 export default function VerifyUpload({ values }) {
   const [summary, setSummary] = useState(false);
   const user = getUser();
   const navigate = useNavigate();
+
+  const id = `v-${createUID(13)}`;
+
+  console.log(id);
 
   async function renderHandler() {
     let error = false;
@@ -30,11 +35,12 @@ export default function VerifyUpload({ values }) {
     }
     const data = {
       ...values,
-      id: `${Date.now()}`,
+      id,
+      createdOn: `${Date.now()}`,
       uid: user[0]?.uid,
     };
     setSummary(true);
-    await setDoc(doc(DB_Reference, `videos`, `${Date.now()}`), data);
+    await setDoc(doc(DB_Reference, `videos`, `${id}`), data);
 
     navigate("/", { replace: true });
   }

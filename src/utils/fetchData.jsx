@@ -31,10 +31,26 @@ export async function FetchUser(userID) {
 
   // check if user exist
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
+    // console.log("Document data:", docSnap.data());
     return docSnap.data();
   } else {
     // doc.data() will be undefined in this case
     return "No such document!";
+  }
+}
+
+// fetch specific video
+
+export async function getVideo(id) {
+  const videoRef = doc(DB_Reference, "videos", id);
+  const videoSnap = await getDoc(videoRef);
+
+  // check if user exist
+  if (videoSnap.exists()) {
+    // console.log("Document data:", videoSnap.data());
+    return videoSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    return "error";
   }
 }
