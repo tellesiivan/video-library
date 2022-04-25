@@ -22,21 +22,16 @@ export default function Login() {
 
       // add user to "users DB"
 
-      const {
-        displayName: name,
-        email,
-        photoURL: imageUrl,
-        uid: userID,
-      } = providerData[0];
+      // const {
+      //   displayName: name,
+      //   email,
+      //   photoURL: imageUrl,
+      //   uid: userID,
+      // } = providerData[0];
 
-      const data = {
-        name,
-        email,
-        imageUrl,
-        userID,
-      };
+      const data = providerData[0];
       // set to db async
-      await setDoc(doc(DB_Reference, `users`, userID), data);
+      await setDoc(doc(DB_Reference, `users`, data.uid), data);
 
       //   navigate users to home page "/"
       navigate("/", { replace: true });

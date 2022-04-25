@@ -4,8 +4,12 @@ import Home from "./Container/Home";
 import Login from "./Container/Login";
 import { getUser, token } from "./utils/authUser";
 import Theme from "./utils/theme";
+import { useDispatch } from "react-redux";
+import { mainActions } from "./store/mainSlice";
 
 export default function App() {
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const activeToken = token();
@@ -18,6 +22,7 @@ export default function App() {
     } else {
       const userInfo = getUser();
       setUser(userInfo[0]);
+      dispatch(mainActions.setUser({ user: userInfo[0] }));
     }
   }, [navigate]);
 

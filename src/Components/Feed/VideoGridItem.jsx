@@ -25,6 +25,8 @@ export default function VideoGridItem({ video }) {
     new Date(parseInt(video.createdOn)).toISOString()
   ).fromNow();
 
+  console.log(timeAgo);
+
   return (
     <li className="relative p-2 bg-gray-100 rounded-sm dark:bg-dark-secondary">
       <div className="block w-full h-48 overflow-hidden transition duration-700 ease-in-out rounded-sm cursor-pointer group aspect-w-10 aspect-h-7 ">
