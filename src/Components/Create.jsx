@@ -31,12 +31,10 @@ export default function Create() {
     const veriFilter = type === "videoFile" ? "videoFile" : lowercaseType;
 
     setValues({ ...values, [veriFilter]: value });
-
-    console.log(values, type, value);
   }
 
   return (
-    <>
+    <div className="pb-4">
       <BgHeaderImg
         info={{
           heading: "Create studio",
@@ -119,6 +117,6 @@ export default function Create() {
           <VerifyUpload values={values} />
         </HalfCard>
       </div>
-    </>
+    </div>
   );
 }

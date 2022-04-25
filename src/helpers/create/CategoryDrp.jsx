@@ -3,11 +3,11 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
 const people = [
-  { id: 1, name: "Wade Cooper" },
-  { id: 2, name: "Arlene Mccoy" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
+  { id: 1, name: "Cars" },
+  { id: 2, name: "Vlog" },
+  { id: 3, name: "Weekend" },
+  { id: 4, name: "First Video" },
+  { id: 5, name: "Studying" },
 ];
 
 function classNames(...classes) {

@@ -4,6 +4,7 @@ import { FetchVideos } from "../utils/fetchData";
 import TagsTop from "./Feed/TagsTop";
 import { useSelector } from "react-redux";
 import VideoGrid from "./Feed/VideoGrid";
+import NoVidMssg from "../helpers/NoVidMssg";
 
 export default function Feed() {
   // const test = useSelector((state) => state.main.user);
@@ -16,6 +17,7 @@ export default function Feed() {
       setLoading(true);
       const data = await FetchVideos();
       setVideos(data);
+      console.log(data);
       setLoading(false);
     }
     getVideos();
@@ -26,13 +28,10 @@ export default function Feed() {
       {/* Header x Tags */}
       {loading ? (
         <Skeleton />
-      ) : videos ? (
-        <>
-          {/* <TagsTop /> */}
-          <VideoGrid videos={videos} />
-        </>
+      ) : videos && videos.length !== 0 ? (
+        <VideoGrid videos={videos} />
       ) : (
-        <>console.log("show no vid msg")</>
+        <NoVidMssg />
       )}
     </>
   );
