@@ -11,7 +11,7 @@ import {
 export async function FetchVideos() {
   let videos = [];
   const querySnapshot = await getDocs(
-    query(collection(DB_Reference, "videos"), orderBy("id", "desc"))
+    query(collection(DB_Reference, "videos"), orderBy("createdOn", "desc"))
   );
 
   querySnapshot.forEach((doc) => {
