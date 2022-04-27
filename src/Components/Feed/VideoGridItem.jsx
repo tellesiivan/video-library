@@ -34,7 +34,7 @@ export default function VideoGridItem({ video }) {
       </div>
       <div className="flex flex-row items-center">
         <div className="w-1/4">
-          <Link to={`u/${video.uid}`}>
+          <Link to={`/u/${video.uid}`}>
             {user.userInfo?.photoURL ? (
               <img
                 className="avatarVideoCard"
@@ -58,7 +58,7 @@ export default function VideoGridItem({ video }) {
         <div className="flex-1 text-right">
           <Link
             to={{
-              pathname: `v/${video.id}`,
+              pathname: `/v/${video.id}`,
               search: `?from=home`,
             }}
           >

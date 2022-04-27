@@ -4,6 +4,7 @@ import {
   getDocs,
   orderBy,
   query,
+  where,
   doc,
   getDoc,
 } from "firebase/firestore";
@@ -53,4 +54,18 @@ export async function getVideo(id) {
     // doc.data() will be undefined in this case
     return "error";
   }
+}
+
+export async function relatedVideos(id) {
+  let videos = [];
+  const q = query(collection(DB_Reference, "videos"), where("id", "!=", id));
+
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+    videos.push(doc.data());
+  });
+
+  return videos;
 }
